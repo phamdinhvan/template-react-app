@@ -1,0 +1,22 @@
+$border-styles: search-border, search;
+@each $border-style in $border-styles {
+  .#{$border-style}-style {
+    background: var(--primary-white);
+    // height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0rem 1rem 3rem rgba(146, 151, 163, 0.2);
+    width: 100%;
+    border-radius: 0.4rem;
+    .input {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+    }
+
+    @if $border-style == search {
+      .MuiOutlinedInput-notchedOutline {
+        border: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+$displays: block, inline, inline-block, flex, grid, initial, none;
+@each $display in $displays {
+  .#{$display} {
+    display: $display !important;
+  }
+}
+
+$flex-directions: row, column, row-reverse, column-reverse;
+@each $direction in $flex-directions {
+  .flex-#{$direction} {
+    flex-direction: $direction !important;
+  }
+}
+
+$justify-contents: center, end, space-between, space-around, flex-start, flex-end, start;
+@each $justify in $justify-contents {
+  .justify-#{$justify} {
+    justify-content: $justify;
+  }
+}
+
+$cursors: pointer, progress, not-allowed, crosshair, grab, text, copy;
+@each $cursor-style in $cursors {
+  .cursor-#{$cursor-style} {
+    cursor: $cursor-style;
+  }
+}

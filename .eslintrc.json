@@ -1,0 +1,14 @@
+{
+  "plugins": ["react-hooks", "prettier"],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": 1,
+    "react/jsx-no-useless-fragment": "warn"
+  },
+  "ignorePatterns": ["node_modules/*", ".build/*", "public/*"]
+}

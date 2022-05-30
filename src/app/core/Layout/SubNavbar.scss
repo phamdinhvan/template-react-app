@@ -1,0 +1,28 @@
+@import "../../../assets/styles/button";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  font-family: Roboto;
+  .sub-route-menu {
+    background-color: var(--primary-white);
+    display: flex;
+    padding: 1.6rem 3.4rem;
+    align-items: center;
+    .nav-item {
+      display: flex;
+      @include btn-font-style(500);
+      color: #5a5959;
+      align-items: center;
+      margin-right: 4rem;
+      .icon {
+        margin-right: 0.8rem;
+      }
+    }
+    .tab-green-style {
+      color: var(--primary-white);
+    }
+  }
+}
