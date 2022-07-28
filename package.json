@@ -169,6 +169,10 @@
     ],
     "resetMocks": true
   },
+  "resolutions": {
+    "react-error-overlay": "6.0.9",
+    "@types/react": "~17.0.0"
+  },
   "devDependencies": {
     "@types/react-router-dom": "5.3.1",
     "babel-plugin-import": "^1.13.5",
