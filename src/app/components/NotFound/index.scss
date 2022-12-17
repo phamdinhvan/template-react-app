@@ -1,0 +1,58 @@
+.not-found {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  background: var(--primary-white);
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    .title {
+      font-family: "SVN-Gotham";
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 3.2rem;
+      text-align: center;
+    }
+    .des {
+      font-family: "SVN-Gotham";
+      font-size: 2rem;
+      line-height: 3.1rem;
+      text-align: center;
+      margin: 1.2rem 0;
+    }
+    .btn-confirm-style {
+      border-radius: 4rem;
+      margin-top: 4.8rem;
+      cursor: pointer;
+    }
+    .rules {
+      font-size: 1.2rem;
+      line-height: 2.5rem;
+      text-align: center;
+      color: var(--primary-gray-6);
+      padding-top: 14.5rem;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  .img-right {
+    width: 40rem;
+  }
+  .img-left {
+    width: 35rem;
+  }
+}

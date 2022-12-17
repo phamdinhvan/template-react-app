@@ -1,0 +1,13 @@
+.loading-comp {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > img {
+    // width: 15rem;
+    // height: 20rem;
+    object-fit: contain;
+    width: 20rem;
+    height: 20rem;
+  }
+}

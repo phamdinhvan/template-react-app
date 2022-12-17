@@ -1,8 +1,8 @@
 import React from "react";
-import { UserIcon } from "../../components/Icons/UserIcon";
-import { APP_ROUTES } from "../../constants/module";
-import SkeletonPage from "../../containers/Example";
+import { UserIcon } from "@Components/Icons/UserIcon";
+import { APP_ROUTES } from "@Const/module";
 import { RouteProps } from "react-router-dom";
+import SkeletonPage from "@Containers/Example";
 
 export const DEFAULT_COLOR = "#6C778D";
 export const ACTIVE_COLOR = "#FFF";
@@ -20,11 +20,11 @@ export type ModuleItem = {
 
 const moduleList: ModuleItem[] = [
   {
-    title: "test",
-    label: "test",
+    title: "Mom know mom sad",
+    label: "Mom know mom sad",
     defaultIcon: <UserIcon color={DEFAULT_COLOR} size={DEFAULT_SIZE} viewBox={DEFAULT_SIZE} />,
     activeIcon: <UserIcon color={ACTIVE_COLOR} size={DEFAULT_SIZE} viewBox={DEFAULT_SIZE} />,
-    path: APP_ROUTES.TEST,
+    path: APP_ROUTES.MNMS,
     enabled: true,
     subRoutes: [],
   },
@@ -33,7 +33,7 @@ const moduleList: ModuleItem[] = [
 export const appRoutes: Array<RouteProps> = [
   {
     exact: true,
-    path: APP_ROUTES.TEST,
+    path: APP_ROUTES.MNMS,
     component: SkeletonPage,
   },
 ];

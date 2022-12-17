@@ -1,4 +1,5 @@
-import { IconBase, IconComponent } from "../../core/Icons";
+import React from "react";
+import { IconBase, IconComponent } from "@Cores/Icons";
 
 export const UserIcon: React.FC<IconComponent> = (props) => {
   return (

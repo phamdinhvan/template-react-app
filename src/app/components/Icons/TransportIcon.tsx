@@ -1,4 +1,5 @@
-import { IconBase, IconComponent } from "../../core/Icons";
+import { IconBase, IconComponent } from "@Cores/Icons";
+import React from "react";
 
 export const TransportIcon: React.FC<IconComponent> = (props) => {
   return (

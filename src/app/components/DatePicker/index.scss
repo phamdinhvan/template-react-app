@@ -1,0 +1,39 @@
+.MuiCalendarPicker-root {
+  .MuiPickersCalendarHeader-root {
+    .MuiPickersCalendarHeader-label {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+  }
+
+  .MuiPickersDay-root {
+    font-size: 1.2rem !important;
+    &:active {
+      background: #8d5d0a;
+      color: #fff;
+    }
+  }
+  .MuiPickersDay-root.Mui-selected {
+    background: #8d5d0a;
+  }
+
+  .Mui-selected {
+    font-size: 1.2rem !important;
+    background: #8d5d0a !important;
+  }
+  button {
+    font-size: 1.2rem !important;
+  }
+}
+// .MuiInputBase-input {
+//   font-size: 1.6rem;
+// }
+
+.date-picker {
+  .MuiSvgIcon-root {
+    font-size: 3rem;
+    color: #8d5d0a;
+  }
+}

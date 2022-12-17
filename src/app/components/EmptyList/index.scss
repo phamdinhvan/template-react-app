@@ -1,0 +1,21 @@
+.empty {
+  margin-top: 15rem;
+  text-align: center;
+  margin: auto;
+  img {
+    object-fit: contain;
+  }
+  .title {
+    font-weight: bold;
+    font-size: 3.6rem;
+    line-height: 4.2rem;
+    color: var(--primary-gray-6) !important;
+    margin: 3rem 0;
+  }
+  .text {
+    color: #97a0af;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+}

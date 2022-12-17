@@ -324,17 +324,27 @@ module.exports = function (webpackEnv) {
       extensions: paths.moduleFileExtensions
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
-      alias: {
-        // Support React Native Web
-        // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-        'react-native': 'react-native-web',
-        // Allows for better profiling with ReactDevTools
-        ...(isEnvProductionProfile && {
-          'react-dom$': 'react-dom/profiling',
-          'scheduler/tracing': 'scheduler/tracing-profiling',
-        }),
-        ...(modules.webpackAliases || {}),
-      },
+        alias: {
+          // Support React Native Web
+          // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
+          'react-native': 'react-native-web',
+          // Allows for better profiling with ReactDevTools
+          ...(isEnvProductionProfile && {
+            'react-dom$': 'react-dom/profiling',
+            'scheduler/tracing': 'scheduler/tracing-profiling',
+          }),
+          ...(modules.webpackAliases || {}),
+          "styles": path.resolve(__dirname, "../src/assets/styles"),
+          "@Assets": path.resolve(__dirname, "../src/assets"),
+          "@Components": path.resolve(__dirname, "../src/app/components"),
+          "@Containers": path.resolve(__dirname, "../src/app/containers"),
+          "@Cores": path.resolve(__dirname, "../src/app/core"),
+          "@Models": path.resolve(__dirname, "../src/models/"),
+          "@Utils": path.resolve(__dirname, "../src/utils"),
+          "@Services": path.resolve(__dirname, "../src/services"),
+          "@Store": path.resolve(__dirname, "../src/store"),
+          "@Const": path.resolve(__dirname, "../src/constants"),
+        },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
         // guards against forgotten dependencies and such.

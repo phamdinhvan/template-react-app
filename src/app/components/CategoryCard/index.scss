@@ -1,0 +1,27 @@
+.category-card {
+  cursor: pointer;
+  width: 100%;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &.active {
+    background: #f0f3f8;
+    border-radius: 6px;
+    .category-card__name {
+      font-weight: 600;
+    }
+  }
+
+  &__name {
+    font-style: normal;
+    font-size: 1.6rem;
+    color: #62656a;
+    margin-left: 2rem;
+  }
+
+  &__action {
+    margin-left: auto;
+  }
+}

@@ -1,4 +1,7 @@
+/* eslint-disable */
 import moment from "moment";
+import Avatar from "@Assets/images/avt.png";
+import { BASE_LINK_IMAGE } from "@Const";
 
 export const loadCallback = <T extends (...P: any[]) => any>(
   cb?: T,
@@ -11,6 +14,19 @@ export const loadCallback = <T extends (...P: any[]) => any>(
  * Hiện giá trị theo định dạng tiền tệ của US
  * @param number kiểu dữ liệu number
  */
+
+export const currencyFormatToText = (number: any) => {
+  //@ts-ignore
+  if (number === 0) return;
+  if (number > 1000000000) {
+    return new Intl.NumberFormat("en-DE").format(number / 1000000000) + " tỷ";
+  } else if (number > 1000000) {
+    return new Intl.NumberFormat("en-DE").format(number / 1000000) + " triệu";
+  } else {
+    return new Intl.NumberFormat("en-DE").format(number / 1000) + " nghìn";
+  }
+};
+
 export function currencyFormat(number: number) {
   // output: 5,000,000
   // return new Intl.NumberFormat("en-US").format(number);
@@ -18,6 +34,11 @@ export function currencyFormat(number: number) {
   // output: 5.0000.000
   return new Intl.NumberFormat("en-DE").format(Math.round(number));
 }
+
+export const currencyFormatEnde = (number: number): string => {
+  // output: 5.0000.000,0
+  return new Intl.NumberFormat("en-DE").format(number);
+};
 
 export function getFirstChar(str: string): string {
   return str.charAt(0);
@@ -85,6 +106,30 @@ export const listener = (type: string, handler: Function, target: any = window) 
   };
 };
 
+export function checkLinkImage(link: string) {
+  if (!link) {
+    return;
+  }
+  return BASE_LINK_IMAGE + link;
+}
+
+export const renderErrorImage = (title?: any) => {
+  const setDefaultImageAvatar = (e: any) => {
+    e.target.src = Avatar;
+  };
+
+  const setDefaultImage = (e: any) => {
+    // e.target.src = ;
+  };
+
+  switch (title) {
+    case "avatar":
+      return setDefaultImageAvatar;
+    default:
+      return setDefaultImage;
+  }
+};
+
 export function convertTv(alias: string, spaceTo?: string) {
   let str = alias || "";
   str = str.toLowerCase();
@@ -99,3 +144,98 @@ export function convertTv(alias: string, spaceTo?: string) {
   str = str.trim();
   return str.replace(/\s+/g, (s) => spaceTo || s);
 }
+
+export function debounce<T extends unknown[], U>(
+  callback: (...args: T) => PromiseLike<U> | U,
+  wait: number
+) {
+  let state:
+    | undefined
+    | {
+        timeout: ReturnType<typeof setTimeout>;
+        promise: Promise<U>;
+        resolve: (value: U | PromiseLike<U>) => void;
+        reject: (value: any) => void;
+        latestArgs: T;
+      } = undefined;
+
+  return (...args: T): Promise<U> => {
+    if (!state) {
+      state = {} as any;
+      state!.promise = new Promise((resolve, reject) => {
+        state!.resolve = resolve;
+        state!.reject = reject;
+      });
+    }
+    clearTimeout(state!.timeout);
+    state!.latestArgs = args;
+    state!.timeout = setTimeout(() => {
+      const s = state!;
+      state = undefined;
+      try {
+        s.resolve(callback(...s.latestArgs));
+      } catch (e) {
+        s.reject(e);
+      }
+    }, wait);
+
+    return state!.promise;
+  };
+}
+
+export const onErrorImage = (
+  event: React.SyntheticEvent<HTMLImageElement, Event>,
+  image: string
+) => {
+  event.currentTarget.src = image;
+  event.currentTarget.className = "error";
+};
+
+export const stringToColor = (string: string) => {
+  let hash = 0;
+  let i;
+
+  /* eslint-disable no-bitwise */
+  for (i = 0; i < string.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = "#";
+
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.slice(-2);
+  }
+  /* eslint-enable no-bitwise */
+
+  return color;
+};
+
+export const stringAvatar = (name: string) => {
+  return {
+    sx: {
+      bgcolor: stringToColor(name),
+      fontSize: "1.6rem",
+      fontWeight: "bold",
+    },
+    children: `${name.split(" ")[0][0]}`,
+  };
+};
+
+export const preventCharacter = (e: any) => {
+  const { ctrlKey, key } = e;
+  if (/[0-9]|Arrow|Backspace|Delete/.test(key) || (ctrlKey && /^a|c|v|x$/.test(key))) {
+    return true;
+  }
+  e.preventDefault();
+  return true;
+};
+
+export const preventNumber = (e: any) => {
+  const { ctrlKey, key } = e;
+  if (/^[0-9\.]|Arrow|Backspace|Delete$/.test(key)) {
+    return true;
+  }
+  e.preventDefault();
+  return true;
+};

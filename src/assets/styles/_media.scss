@@ -53,6 +53,12 @@ $designDimension: 1440px;
   }
 }
 
+@mixin from1660_ {
+  @media (min-width: #{$xxl}) {
+    @content;
+  }
+}
+
 @mixin max1440_ {
   @media (max-width: #{$designDimension}) {
     @content;
@@ -73,6 +79,12 @@ $designDimension: 1440px;
 
 @mixin to992_ {
   @media (max-width: #{$lg}) {
+    @content;
+  }
+}
+
+@mixin to667_ {
+  @media (max-height: 640px) {
     @content;
   }
 }

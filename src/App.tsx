@@ -1,7 +1,7 @@
 import React from "react";
+import Layout from "@Cores/Layout";
+import { appRoutes } from "@Cores/Layout/routes";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Layout from "./app/core/Layout";
-import { appRoutes } from "./app/core/Layout/routes";
 
 function App() {
   return (

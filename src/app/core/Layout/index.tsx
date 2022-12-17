@@ -1,26 +1,24 @@
-import { useState } from "react";
-import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
+import { TEXT_HOLDER } from "@Const/utilities";
 import {
-  Box,
-  Drawer as MuiDrawer,
-  AppBar as MuiAppBar,
-  Toolbar,
-  Typography,
-  Divider,
-  IconButton,
-  AppBarProps as MuiAppBarProps,
-} from "@mui/material";
-import {
-  Menu as MenuIcon,
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
+  Menu as MenuIcon,
 } from "@mui/icons-material";
-import moduleList from "./routes";
+import {
+  AppBar as MuiAppBar,
+  AppBarProps as MuiAppBarProps,
+  Box,
+  Divider,
+  Drawer as MuiDrawer,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { CSSObject, styled, Theme, useTheme } from "@mui/material/styles";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./index.scss";
-import { useHistory } from "react-router-dom";
-import { TEXT_HOLDER } from "../../constants/utilities";
-import { Link } from "react-router-dom";
-import React from "react";
+import moduleList from "./routes";
 import SubNavbar from "./SubNavbar";
 const drawerWidth = 240;
 
@@ -96,7 +94,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" 
 const LayoutComponent: React.FC = (props) => {
   const theme = useTheme();
   const [open, setOpen] = useState<boolean>(false);
-  const history = useHistory();
+  const location = useLocation();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -114,9 +112,9 @@ const LayoutComponent: React.FC = (props) => {
 
   const currentRoute = React.useMemo(() => {
     const routes = moduleList.map(({ path }) => path).reverse();
-    const selected = routes.find((route) => history.location.pathname.includes(route));
+    const selected = routes.find((route) => location.pathname.includes(route));
     return selected;
-  }, [history.location.pathname]);
+  }, [location.pathname]);
 
   const selectedRoute = React.useMemo(() => {
     const selected = moduleList.find((route) => currentRoute === route.path);
